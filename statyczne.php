@@ -1,10 +1,13 @@
 <?php
-function test(){
-    static $licznik=0;
-    echo $licznik . "<br>";
-    $licznik++; 
-}
-test();
-test();
-test();
+$a = 3;
+$b = &$a;
+
+print “$a\n”;
+print “$b\n”;
+
+$a = 4;
+
+print “$a\n”;
+print “$b\n”;
+
 ?>
