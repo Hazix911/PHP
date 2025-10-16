@@ -12,6 +12,8 @@ if(!$conn){
 echo "connected successfully";
 
 $database = "goetel42";
+//tworzenie tabeli
+
 /*
 $sql = "CREATE DATABASE $database";
 if(mysqli_query($conn,$sql)){
@@ -27,6 +29,8 @@ if (mysqli_select_db($conn,$database)){
 } else {
     echo "Error Select database:" . mysqli_error($conn);
 }
+
+// tworzenie tabeli
 /*
 $sql = "CREATE TABLE MyGuests (
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -51,6 +55,8 @@ $sql = "CREATE TABLE MyGuests (
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }    
+
+        //wpisywanie wartosci do tabeli
         /*
      $sql = "INSERT INTO MyGuests (firstname, lastname, email)
      VALUES ('John','Doe','john@example.com');";
@@ -67,6 +73,9 @@ $sql = "CREATE TABLE MyGuests (
      }
 
 */
+// wypisywanie 1
+
+
 $sql = "SELECT id, firstname, lastname FROM Myguests";
 $result = mysqli_query($conn,$sql);
 
@@ -85,4 +94,40 @@ while($row = mysqli_fetch_assoc($result)){
     echo "id: " . $row["id"] . " - Name: ". $row["firstname"].
     " " . $row["lastname"] . "<br>";
 }
+
+
+// wypisywanie 2
+$sql = "SELECT id, firstname, lastname FROM MyGuests";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0){
+
+    while($row = mysqli_fetch_row($result)) {
+        echo "id: " . $row[0] . " - Name: " . $row[1] . " " . $row[2] . "<br>";
+    }
+} else {
+    echo "0 results";
+}
+
+// wypisywanie 2 w tabeli
+$sql = "SELECT id, firstname, lastname FROM MyGuests";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0){
+    echo "<table>";
+    while($row = mysqli_fetch_row($result)) {
+        echo "<tr><td>" . $row[0] . "</td><td>" . $row[1] . "</td><td>" . $row[2] . "</td></tr>";
+    }
+     echo "<table>";
+} else {
+    echo "0 results";
+}
+
+
+
+
+
+
+
+mysqli_close($conn);
 ?>
