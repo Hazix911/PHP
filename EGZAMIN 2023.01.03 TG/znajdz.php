@@ -39,15 +39,13 @@
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $miasto = htmlspecialchars($_POST["miasto"]);
-
-            // Połączenie z bazą danych
+            
             $conn = new mysqli("localhost", "root", "", "kwiaciarnia");
 
             if ($conn->connect_error) {
                 die("Błąd połączenia: " . $conn->connect_error);
             }
 
-            // Zapytanie do bazy danych
             $sql = "SELECT nazwa, ulica FROM kwiaciarnie WHERE miasto='$miasto'";
             $result = $conn->query($sql);
 
@@ -65,7 +63,7 @@
     </main>
 
     <footer>
-        <p>Stronę opracował: 123456</p>
+        <p>Stronę opracował:Tomasz Gibas</p>
         <div style="clear: both;"></div>
     </footer>
 </body>
